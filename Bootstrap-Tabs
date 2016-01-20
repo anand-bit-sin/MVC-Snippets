@@ -1,0 +1,17 @@
+<ul class="nav nav-tabs" id="myTab">
+    <li><a data-toggle="tab" href="#sectionA">My.Com</a></li>
+    <li><a data-toggle="tab" href="#sectionB">MyTab2</a></li>
+    <li><a data-toggle="tab" href="#sectionC">My Ads</a></li>
+    <li><a data-toggle="tab" href="#sectionD">My Feedback</a></li>
+</ul>
+<div class="tab-content">
+    <div id="sectionA" class="tab-pane fade in active">section1</div>
+    <div id="sectionB" class="tab-pane fade in active">section2</div>
+    <div id="sectionC" class="tab-pane fade in active">section3</div>
+    <div id="sectionD" class="tab-pane fade in active">section4</div>
+</div>
+
+<script>
+    $('a[href="#sectionD"]').tab('show');
+    $('a[href="#sectionA"]').tab('show');
+</script>
