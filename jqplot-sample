@@ -1,0 +1,37 @@
+            <div class="col-lg-6 col-md-6" id="Adschart4" style="height:400px;width:500px; "></div>
+            <script>
+                $.jqplot('Adschart4',
+                    [[@Html.Raw(ChartHelper.GetAdsBugCountTrendArray("Active", @ViewData["startdate"].ToString(), @ViewData["enddate"].ToString()))], [@Html.Raw(ChartHelper.GetAdsBugCountTrendArray("Closed", @ViewData["startdate"].ToString(), @ViewData["enddate"].ToString()))], [@Html.Raw(ChartHelper.GetAdsBugCountTrendArray("Resolved", @ViewData["startdate"].ToString(), @ViewData["enddate"].ToString()))]],
+                    {
+                        title: 'Active,Closed and Resolved Bug Trends',
+                        axes: {
+                            xaxis: {
+                                renderer: $.jqplot.DateAxisRenderer,
+                                tickInterval: '1 week'
+                            }
+                        },
+                        series: [{ label: 'Active', color: 'red' }, { label: 'Closed', color: 'green' }, { label: 'Resolved', color: 'blue' }],
+                        legend: { show: true, location: 'nw', placement: "insideGrid" }
+                    }
+                );
+            </script>
+            
+            <div class="col-lg-6 col-md-6" id="Adschart1" style="height:400px;width:500px; "></div>
+            <script>
+                $.jqplot('Adschart1',
+                    [[['Active', @TfsConnectionHelper.GetAdsBugsCount("Active", @ViewData["startdate"].ToString(), @ViewData["enddate"].ToString())], ['Resolved', @TfsConnectionHelper.GetAdsBugsCount("Resolved", @ViewData["startdate"].ToString(), @ViewData["enddate"].ToString())], ['Closed', @TfsConnectionHelper.GetAdsBugsCount("Closed", @ViewData["startdate"].ToString(), @ViewData["enddate"].ToString())]]],
+                    {
+                        title: ' Bugs by Status',
+                        seriesDefaults: {
+                            shadow: false,
+                            renderer: jQuery.jqplot.PieRenderer,
+                            rendererOptions: {
+                                startAngle: 180,
+                                sliceMargin: 4,
+                                showDataLabels: true
+                            }
+                        },
+                        legend: { show: true, location: 'w' }
+                    }
+                );
+            </script>
